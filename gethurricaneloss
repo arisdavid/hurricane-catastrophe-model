@@ -1,0 +1,18 @@
+#!/usr/local/bin/python3
+import argparse
+
+
+if __name__ == '__main__':
+
+    parser = argparse.ArgumentParser("gethurricaneloss")
+
+    parser.add_argument('florida_landfall_rate', help='Annual rate of land-falling hurricanes in Florida')
+    parser.add_argument('florida_mean', help='LogNormal parameter mean')
+    parser.add_argument('florida_stdev', help='LogNormal parameter std deviation')
+    parser.add_argument('gulf_landfall_rate', help='Annual rate of land-falling hurricanes in Gulf states')
+    parser.add_argument('--n', help='Number of Monte Carlo Simulations')
+
+    args = parser.parse_args()
+
+    print(args)
+    print("Aris")
