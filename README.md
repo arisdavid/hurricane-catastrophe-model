@@ -15,7 +15,7 @@ Hurricane loss model to estimate expected annual economic loss.
 4. Call the hurricane model.
    
    ```
-    gethurricaneloss 0.4 0.5 0.6 0.7 --n100
+    gethurricaneloss 0.4 0.5 0.6 0.7 --n=100
    ```
 5. For help on understanding the parameters, type the following command
    ```
