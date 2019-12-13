@@ -24,8 +24,7 @@ Hurricane loss model to estimate expected annual economic loss.
     
     ```
     positional arguments:
-    florida_landfall_rate
-                        Annual rate of land-falling hurricanes in Florida
+    florida_landfall_rate Annual rate of land-falling hurricanes in Florida
     florida_mean          LogNormal parameter mean
     florida_stdev         LogNormal parameter std deviation
     gulf_landfall_rate    Annual rate of land-falling hurricanes in Gulf states
