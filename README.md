@@ -15,12 +15,24 @@ Hurricane loss model to estimate expected annual economic loss.
 4. Call the hurricane model.
    
    ```
-    hurricaneloss 0.4 0.5 0.6 0.7 100
+    gethurricaneloss 0.4 0.5 0.6 0.7 --n100
    ```
 5. For help on understanding the parameters, type the following command
    ```
-    hurricaneloss -h
+    gethurricaneloss -h
    ```
+    
+    ```
+    positional arguments:
+    florida_landfall_rate
+                        Annual rate of land-falling hurricanes in Florida
+    florida_mean          LogNormal parameter mean
+    florida_stdev         LogNormal parameter std deviation
+    gulf_landfall_rate    Annual rate of land-falling hurricanes in Gulf states
+    
+    optional arguments:
+      --n N               Number of Monte Carlo Simulations
+    ```
    
     ![gethurricaneloss](img/help.png?raw=true)
    
