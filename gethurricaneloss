@@ -36,7 +36,7 @@ if __name__ == '__main__':
     log.info("gethurricaneloss params: "
              f"{{florida_landfall_rate: {florida_landfall_rate}, florida_mean: {florida_mean},"
              f" florida_stdev: {florida_sigma}, gulf_landfall_rate: {gulf_landfall_rate},"
-             f" gulf_mean: {gulf_mean}, gulf_sigma: {gulf_sigma},"
+             f" gulf_mean: {gulf_mean}, gulf_stdev: {gulf_sigma},"
              f" n: {args.n}}}")
 
     if args.n is not None and int(args.n) != 0:
