@@ -2,3 +2,5 @@
 Dockerfile
 *.pyc
 .*
+venv/
+img/

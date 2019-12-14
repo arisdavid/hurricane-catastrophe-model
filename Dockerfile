@@ -14,3 +14,9 @@ RUN python -m pytest --cov=src/tests
 # Add project path to PATH
 ENV PATH /usr/oasis:$PATH
 
+# For running in a windows host machine
+RUN apt-get update
+RUN apt-get install dos2unix
+RUN dos2unix gethurricaneloss
+
+

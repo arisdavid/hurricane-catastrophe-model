@@ -1,41 +1,54 @@
-#!/usr/local/bin/python3
+#!/usr/local/bin/python
+
 import argparse
 from src.cat_models.hurricane_loss import hurricane_loss_model
 import logging
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s-%(message)s'
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    filename='hurricaneloss.log'
 )
+
+log = logging.getLogger(__name__)
 
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser("gethurricaneloss")
 
-    parser.add_argument('florida_landfall_rate', help='Annual rate of land-falling hurricanes in Florida')
+    parser.add_argument('florida_landfall_rate', help='Annual rate of land-falling hurricanes in Florida e.g. 3')
     parser.add_argument('florida_mean', help='Florida LogNormal parameter mean')
     parser.add_argument('florida_stdev', help='Florida LogNormal parameter std deviation')
     parser.add_argument('gulf_landfall_rate', help='Annual rate of land-falling hurricanes in Gulf states')
-    parser.add_argument('gulf_mean', help='Gulf states LogNormal parameter mean')
+    parser.add_argument('gulf_mean', help='Gulf states LogNormal parameter mean e.g. 6')
     parser.add_argument('gulf_stdev', help='Gulf states LogNormal parameter stdev')
     parser.add_argument('--n', help='Number of Monte Carlo Simulations')
 
     args = parser.parse_args()
 
     # Extract variables
-    florida_landfall_rate = float(args.florida_landfall_rate)
+    florida_landfall_rate = int(args.florida_landfall_rate)
     florida_mean = float(args.florida_mean)
     florida_sigma = float(args.florida_stdev)
-    gulf_landfall_rate = float(args.gulf_landfall_rate)
+    gulf_landfall_rate = int(args.gulf_landfall_rate)
     gulf_mean = float(args.gulf_mean)
     gulf_sigma = float(args.gulf_stdev)
 
-    num_sim = 0
-    if 'num_sim' in args:
-        num_sim = int(args.num_sim)
+    log.info("gethurricaneloss params: "
+             f"{{florida_landfall_rate: {florida_landfall_rate}, florida_mean: {florida_mean},"
+             f" florida_stdev: {florida_sigma}, gulf_landfall_rate: {gulf_landfall_rate},"
+             f" gulf_mean: {gulf_mean}, gulf_sigma: {gulf_sigma},"
+             f" n: {args.n}}}")
 
-    # Get expected economic loss
+    if args.n is not None and int(args.n) != 0:
+        num_sim = int(args.n)
 
-    el = hurricane_loss_model(florida_landfall_rate, florida_mean, florida_sigma,
-                              gulf_landfall_rate, gulf_mean, gulf_sigma, num_sim)
+        # Calculate expected economic loss
+        el = hurricane_loss_model(florida_landfall_rate, florida_mean, florida_sigma,
+                                  gulf_landfall_rate, gulf_mean, gulf_sigma, num_sim)
+        log.info(f"gethurricaneloss result: {el}")
+        print(el)
 
-    print(el)
+    else:
+        msg = f"gethurricaneloss result: num simulations is {args.n}"
+        log.warning(msg)
+        print(msg)
