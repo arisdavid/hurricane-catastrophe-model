@@ -2,6 +2,13 @@
 
 Hurricane loss model to estimate expected annual economic loss.
 
+## Requirement
+Execute the following command in linux container
+```
+usage: gethurricaneloss [options] florida_landfall_rate florida_mean florida_stddev
+gulf_landfall_rate gulf_mean gulf_stddev
+```
+
 ## Instructions
 1. Clone the repository and cd into the root directory.
 2. Build the python / linux container.
@@ -37,8 +44,8 @@ Hurricane loss model to estimate expected annual economic loss.
       ```
        
       ![gethurricaneloss](img/help.png?raw=true)
-6. View the hurricaneloss.log. It's stored in the root directory.
+6. Print the hurricaneloss.log. It's stored in the root directory (same level as gethurricaneloss.py file).
     ```
-    vi hurricaneloss.log
+    cat hurricaneloss.log
     ```      
    
